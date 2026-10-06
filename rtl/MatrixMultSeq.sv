@@ -9,7 +9,7 @@ module MatrixMultSeq(
     input logic [7:0] B [0:3],
 
     // Outputs
-    output logic [17:0] C [0:3],
+    output logic [3:0][17:0] C,
     output logic done
 );
 
@@ -54,8 +54,7 @@ module MatrixMultSeq(
 
 
     // STATE REGISTER
-    // Stores the current FSM state.
-    // Only changes on a rising clock edge.
+    // Stores the current FSM state & it only changes on a rising clock edge.
 
     always_ff @(posedge clk) begin
 
@@ -126,7 +125,6 @@ module MatrixMultSeq(
 
 
     // FSM OUTPUT / DATAPATH CONTROL LOGIC
-    //
     // Determines what the MAC should do
     // during each state.
 

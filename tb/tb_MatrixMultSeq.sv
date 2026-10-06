@@ -1,3 +1,6 @@
+//`include "MatrixMultSeq.sv"  
+//for edaplayground use the import
+
 module tb_MatrixMultSeq;
 
     logic clk;
@@ -7,7 +10,7 @@ module tb_MatrixMultSeq;
     logic [7:0] A [0:3];
     logic [7:0] B [0:3];
 
-    logic [17:0] C [0:3];
+    logic [3:0][17:0] C;
     logic done;
 
 
@@ -21,6 +24,24 @@ module tb_MatrixMultSeq;
         .C(C),
         .done(done)
     );
+  
+  always @(posedge clk) begin
+    #1;
+
+    $display(
+        "time=%0t state=%0d index=%0d mac_rst=%b enable=%b A=%0d B=%0d acc=%0d C=%0d,%0d,%0d,%0d",
+        $time,
+        dut.state,
+        dut.output_index,
+        dut.mac_rst,
+        dut.mac_enable,
+        dut.mac_A,
+        dut.mac_B,
+        dut.mac_accumulator,
+        C[0], C[1], C[2], C[3]
+    );
+end
+  
 
 
     // 100 MHz clock
