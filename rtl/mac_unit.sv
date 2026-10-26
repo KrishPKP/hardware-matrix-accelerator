@@ -1,21 +1,22 @@
-module MacUnit(
-    //inputs
-    input logic clk,
-    input logic rst,
-    input logic enable,
-    input logic [7:0] A,
-    input logic [7:0] B,
-    //outputs
-    output logic [17:0] accumulator); //lets say for 8bit by 8bit integers, for 4x4 matrices then 18 bit should be goood for the accumulator    
-    //triggers exclusively on the rising edge of clock signal
+module MacUnit #(
+    parameter int DATA_WIDTH = 8,
+    parameter int ACC_WIDTH = 18
+)(
+    input  logic clk,
+    input  logic rst,
+    input  logic enable,
+
+    input  logic [DATA_WIDTH-1:0] A,
+    input  logic [DATA_WIDTH-1:0] B,
+
+    output logic [ACC_WIDTH-1:0] accumulator
+);
+
     always_ff @(posedge clk) begin
-
         if (rst)
-            accumulator <= 0;
-
+            accumulator <= '0;
         else if (enable)
-            accumulator <= accumulator + A*B;
+            accumulator <= accumulator + (A * B);
     end
-        
 
 endmodule
