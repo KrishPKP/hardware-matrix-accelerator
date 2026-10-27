@@ -1,7 +1,7 @@
 import random
 
 N = 4
-NUM_TESTS = 5
+NUM_TESTS = 100
 
 
 def matmul(A, B):
