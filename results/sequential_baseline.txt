@@ -1,0 +1,14 @@
+Architecture: Sequential single-MAC matrix multiplier
+Target FPGA: Cyclone V GX 5CGXFC5C6F27C7
+Matrix size: N=4
+Data width: 8 bits
+Accumulator width: 18 bits
+
+Synthesis:
+DSP elements: 1
+Logic cells: 423
+Input pins: 259
+Output pins: 289
+
+Verification:
+100 randomized test cases passed against Python golden model
